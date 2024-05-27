@@ -1,8 +1,9 @@
-const http = require('http');
-const fs = require('fs');
 const path = require('path');
+const fs = require('fs');
+const http = require('http');
 
 const PUBLIC_DIR = path.join(__dirname, '../public');
+const NODE_DIR = path.join(__dirname, '../node_modules');
 
 const onRequest = (req, res) => {
     if (req.method === 'GET') {
@@ -10,7 +11,7 @@ const onRequest = (req, res) => {
             serveFile(res, 'html/mainPage.html', 'text/html');
         } else if (req.url === '/search') {
             serveFile(res, 'html/cariMobil.html', 'text/html');
-        } else if (req.url.startsWith('/scripts/') || req.url.startsWith('/css/') || req.url.startsWith('/images/')) {
+        } else if (req.url.startsWith('/scripts/') || req.url.startsWith('/css/') || req.url.startsWith('/images/') || req.url.startsWith('/node_modules/')) {
             serveStaticFile(req, res);
         } else {
             res.writeHead(404);
@@ -44,7 +45,12 @@ const serveStaticFile = (req, res) => {
         '.jpg': 'image/jpeg',
     };
     const contentType = mimeTypes[extname] || 'application/octet-stream';
-    fs.readFile(path.join(PUBLIC_DIR, req.url), (err, data) => {
+
+    const filePath = req.url.startsWith('/node_modules/') 
+                     ? path.join(NODE_DIR, req.url.replace('/node_modules/', '')) 
+                     : path.join(PUBLIC_DIR, req.url);
+
+    fs.readFile(filePath, (err, data) => {
         if (err) {
             res.writeHead(404);
             res.end('File not found');

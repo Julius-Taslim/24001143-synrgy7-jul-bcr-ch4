@@ -40,13 +40,15 @@ class Car {
   }
 
   render() {
+    console.log(this.capacity);
     return `
-      <p>id: <b>${this.id}</b></p>
-      <p>plate: <b>${this.plate}</b></p>
-      <p>manufacture: <b>${this.manufacture}</b></p>
-      <p>model: <b>${this.model}</b></p>
-      <p>available at: <b>${this.availableAt}</b></p>
-      <img src="${this.image}" alt="${this.manufacture}" width="64px">
+      <img src="${this.image}" alt="${this.manufacture}" class="w-full h-auto lg:h-[11rem] object-cover overflow-hidden pb-4">
+      <p class="text-lg font-semibold">${this.type} ${this.model}</p>
+      <p class="text-xl font-semibold"><b>Rp ${this.rentPerDay} / hari</b></p>
+      <p>${this.description}</p>
+      <p>Capacity: <b>${this.capacity}</b></p>
+      <p>Transmission: <b>${this.transmission}</b></p>
+      <p>Year: <b>${this.year}</b></p>
     `;
   }
 }

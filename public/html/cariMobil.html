@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./../css/output.css" />
+    <link href="./../css/output.css" rel="stylesheet"/>
     <link href="https://fonts.cdnfonts.com/css/helvetica-neue-55" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="../../node_modules/flickity/css/flickity.css" media="screen">
+    <link href="../../node_modules/flickity/css/flickity.css" rel="stylesheet" media="screen">
 </head>
 <title>Document</title>
 </head>
@@ -77,31 +77,31 @@
     <!--/Main-->
 
     <!--Forms-->
-    <div class="flex justify-content-center border-blue-700 mx-0 md:mx-10 shadow-md p-10 rounded">
-        <form name="carform" class="flex md:flex-row flex-col mx-auto justify-content-around items-end">
-            <div class="flex flex-col opacity-75 text-sm w-[20%] mx-5 my-6">
+    <div class="flex flex-col justify-content-center border-blue-700 mx-0 md:mx-8 shadow-md p-2 lg:p-8 rounded">
+        <div name="carform" class="flex md:flex-row flex-col mx-8 justify-between items-end">
+            <div class="flex flex-col text-sm w-full lg:w-[25%] mx-4 my-6">
                 <label for="type">Tipe Driver</label>
-                <select class="opacity-75 text-sm w-full h-8" id="driver-type">
+                <select class="opacity-75 text-sm w-full h-10" id="driver-type">
                     <option value="" disabled selected>Pilih Tipe Driver</option>
                     <option value=1>Dengan Sopir</option>
                     <option value=2>Tanpa Sopir (Lepas Kunci)</option>
                 </select>
             </div>
-            <div class="flex flex-col opacity-75 text-sm w-[20%] mx-5 my-6">
+            <div class="flex flex-col opacity-75 text-sm w-full lg:w-[25%] mx-4 my-6">
                 <label for="date">Tanggal</label>
-                <input type="date" id="date" class="w-full h-8">
+                <input type="date" id="date" class="w-full h-10">
             </div>
-            <div class="flex flex-col opacity-75 text-sm w-[20%] mx-5 my-6">
+            <div class="flex flex-col opacity-75 text-sm w-full lg:w-[25%] mx-4 my-6">
                 <label for="arrival">Waktu Jemput/Ambil</label>
-                <input type="time" id="arrival" class="w-full h-8">
+                <input type="time" id="time" class="w-full h-10">
             </div>
-            <div class="flex flex-col opacity-75 text-sm w-[20%] mx-5 my-6">
+            <div class="flex flex-col opacity-75 text-sm w-full lg:w-[25%] mx-4 my-6">
                 <label for="quantity">Jumlah Penumpang:</label>
-                <input type="number" id="amount" name="quantity" min="1" max="10" value="1" class="w-full h-8">
+                <input type="number" id="amount" min="1" max="10" value="1" class="w-full h-10">
             </div>
-            <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded w-[15%] h-[35%] disabled mx-5 my-6" id="load-btn">Search</button>
-        </form>
-        <div id="cars-container d-flex"></div>
+            <button class="bg-slate-600 text-white font-bold py-2 px-4 rounded w-[30%] lg:w-[15%] h-[35%] mx-5 my-6" id="load-btn">Search</button>
+        </div>  
+        <div id="cars-container" class="flex flex-wrap"></div>
     </div>
     <!--/Forms-->
 
